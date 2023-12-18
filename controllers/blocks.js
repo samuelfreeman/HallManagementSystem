@@ -1,4 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require('@prisma/client');
+
 const prisma = new PrismaClient();
 
 const saveBlock = async (req, res, next) => {
@@ -28,7 +29,7 @@ const getBlocks = async (req, res, next) => {
 
 const changeBlock = async (req, res, next) => {
   try {
-    const blockname = req.params.blockname;
+    const { blockname } = req.params;
     const data = req.body;
     const block = await prisma.block.update({
       where: {
@@ -45,17 +46,18 @@ const changeBlock = async (req, res, next) => {
 };
 const deleteBlock = async (req, res, next) => {
   try {
-    const blockname = req.params.blockname;
-    const block = await prisma.block.delete({
+    const { blockname } = req.params;
+     await prisma.block.delete({
       where: {
         blockname,
       },
     });
     res.status(201).json({
-       message:"block has been deleted",
+      message: 'block has been deleted',
     });
   } catch (error) {
     console.log(error);
+    next();
   }
 };
 module.exports = {
