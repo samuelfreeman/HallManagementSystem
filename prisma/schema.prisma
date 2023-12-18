@@ -4,39 +4,91 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-model block{
-  id    Int     @id @default(autoincrement())
- blockname  String  @unique @db.VarChar(1)
- totalRooms  Int     
- floorCount   Int?
- occupancyStatus String
- del_flg         Boolean             @default(false)         
-  createdAt       DateTime             @default(now())   
-  updatedAt       DateTime             @updatedAt 
-  rooms  rooms[]
+
+/// the admin that assigns a room to the student  and overlooks the application
+model user {
+  id        String   @id @default(uuid())
+  fullname  String
+  email     String
+  password  String
+  telephone String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
-model rooms{
-id     Int     @id @default(autoincrement())
-roomnumber   String  @unique @db.VarChar(1)
-block       block @relation(fields:[blockId] ,references: [id]) 
-blockId        Int
-del_flg         Boolean             @default(false)         
-createdAt       DateTime             @default(now())   
-updatedAt       DateTime             @updatedAt
+
+model student {
+  studentId      String           @id @default(uuid())
+  fullName       String
+  email          String?
+  password       String
+  gender         String           @unique @db.VarChar(1)
+  level          String
+  telephone      String
+  department     String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  roomAssignment roomAssignment[]
 }
-model occupant{
- id     Int     @id @default(autoincrement())
- fullName String 
- email  String
- password String
- gender String  @unique @db.VarChar(1)
- 
 
+model roomAssignment {
+  assigmentCode String   @id @default(uuid())
+  rooms         rooms?   @relation(fields: [roomsId], references: [id])
+  roomsId       Int?
+  occupant      student? @relation(fields: [studentId], references: [studentId])
+  studentId     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
 
+model block {
+  id              Int       @id @default(autoincrement())
+  blockname       blockname
+  totalRooms      Int
+  occupancyStatus String
+  del_flg         Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  floor           floor[]
+}
 
+model floor {
+  id      Int     @id @default(autoincrement())
+  status  status
+  block   block?  @relation(fields: [blockId], references: [id])
+  blockId Int?
+  rooms   rooms[]
+}
 
+model rooms {
+  id             Int              @id @default(autoincrement())
+  roomnumber     String           @unique @db.VarChar(1)
+  del_flg        Boolean          @default(false)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  floor          floor?           @relation(fields: [floorId], references: [id])
+  floorId        Int?
+  roomAssingment roomAssignment[]
+}
+
+model department {
+  id   String @id @default(uuid())
+  name String
+}
+
+enum blockname {
+  A
+  B
+  C
+  D
+}
+
+enum status {
+  Vacant
+  Occupied
+  Partially_Occupied
 }
