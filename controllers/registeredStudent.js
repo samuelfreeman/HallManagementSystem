@@ -1,6 +1,4 @@
 ///registering a new student in the hall assuming the have paid their fees 
-
-
 const { PrismaClient } = require('@prisma/client');
 
 

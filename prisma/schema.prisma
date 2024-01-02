@@ -6,13 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 /// the admin that assigns a room to the student  and overlooks the application
-model user {
-  id        String   @id @default(uuid())
+model admin {
+  id        String   @id @default(uuid()) @map("_id")
   fullname  String
   email     String
   password  String
@@ -22,62 +22,66 @@ model user {
 }
 
 model student {
-  studentId      String           @id @default(uuid())
+  studentId      String           @id @default(uuid()) @map("_id")
+  profile        String
   fullName       String
   email          String?
   password       String
-  gender         String           @unique @db.VarChar(1)
+  gender         String           @unique
   level          String
   telephone      String
-  department     String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
   roomAssignment roomAssignment[]
+
+  department   department? @relation(fields: [departmentId], references: [id])
+  departmentId String?     @db.ObjectId
 }
 
 model roomAssignment {
-  assigmentCode String   @id @default(uuid())
-  rooms         rooms?   @relation(fields: [roomsId], references: [id])
-  roomsId       Int?
-  occupant      student? @relation(fields: [studentId], references: [studentId])
-  studentId     String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  assigmentCode String @id @map("_id")
+
+  occupant  student? @relation(fields: [studentId], references: [studentId])
+  studentId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model block {
-  id              Int       @id @default(autoincrement())
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
   blockname       blockname
   totalRooms      Int
-  occupancyStatus String
-  del_flg         Boolean   @default(false)
+  occupancyStatus String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   floor           floor[]
 }
 
 model floor {
-  id      Int     @id @default(autoincrement())
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
   status  status
-  block   block?  @relation(fields: [blockId], references: [id])
-  blockId Int?
   rooms   rooms[]
+  block   block?  @relation(fields: [blockId], references: [id])
+  blockId String? @db.ObjectId
 }
 
 model rooms {
-  id             Int              @id @default(autoincrement())
-  roomnumber     String           @unique @db.VarChar(1)
-  del_flg        Boolean          @default(false)
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  floor          floor?           @relation(fields: [floorId], references: [id])
-  floorId        Int?
-  roomAssingment roomAssignment[]
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  roomnumber Int    @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  floor   floor?  @relation(fields: [floorId], references: [id])
+  floorId String? @db.ObjectId
 }
 
 model department {
-  id   String @id @default(uuid())
-  name String
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  student   student[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 enum blockname {
