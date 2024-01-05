@@ -28,7 +28,7 @@ model student {
   email          String?
   password       String
   gender         String           @unique
-  level          String
+  level          Int
   telephone      String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt

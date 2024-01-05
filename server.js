@@ -14,10 +14,10 @@ const bodyparser = require('body-parser');
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
-const routerBlock = require('./routes/blocks');
+const indexRoute = require('./src/v1/routes/index');
 // middleware for body parser
 app.use(bodyparser.json());
-app.use('/api', routerBlock);
+app.use('/api', indexRoute);
 app.listen(PORT, () => {
   console.log('Server running on port', `${PORT}`);
 });
