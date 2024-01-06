@@ -6,5 +6,5 @@ const route = Router();
 const blocksRoute = require('./blocks')
 
 ///using our route middleware
-route.use('/',blocksRoute);
+route.use('/blocks',blocksRoute);
 module.exports = route;

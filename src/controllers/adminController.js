@@ -1,4 +1,4 @@
-const prisma = require('../helpers/prismaclient')
+const prisma = require('../')
 
 const addAdmin = async (req,res,next)=>{
     try{

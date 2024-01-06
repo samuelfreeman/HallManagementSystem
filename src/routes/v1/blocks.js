@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const blocks = require('../controllers/blocksController');
+const blocks = require('../../controllers/blocksController');
 
 router.get('/', blocks.getBlocks);
 router.patch('/:blockname', blocks.changeBlock);
