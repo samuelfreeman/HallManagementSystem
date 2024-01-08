@@ -10,6 +10,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const compression = require("compression");
 const bodyparser = require("body-parser");
+const indexRoute = require("./src/routes/index");
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
@@ -22,7 +23,7 @@ app.use((err, req, res) => { // if person hits a wrong endpoint
   });
 });
 
-const indexRoute = require("./src/v1/routes/index");
+
 // middleware for body parser
 app.use(bodyparser.json());
 app.use("/api", indexRoute);

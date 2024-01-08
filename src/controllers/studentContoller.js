@@ -1,5 +1,7 @@
 ///registering a new student in the hall assuming the have paid their fees 
 const prisma = require('../helpers/prismaclient')
+
+
 const registerStudent = async(req, res, next) =>{
     try{
         //checking student availability in the system before trying to register a student
