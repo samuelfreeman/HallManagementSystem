@@ -1,4 +1,4 @@
-const prisma = require('../helpers/prismaclient')
+const prisma = require('../utils/prismaUtil')
 const saveBlock = async (req, res, next) => {
   try {
     const data = req.body;
