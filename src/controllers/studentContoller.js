@@ -5,6 +5,7 @@ const prisma = require('../helpers/prismaclient')
 const registerStudent = async(req, res, next) =>{
     try{
         //checking student availability in the system before trying to register a student
+        
 
         const data = req.body;
         const student = await prisma.student.findFirst({

@@ -16,7 +16,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
 
-app.use((err, req, res) => { // if person hits a wrong endpoint 
+app.use((err, res) => { // if person hits a wrong endpoint 
   res.status(404).json({
     error: err,
     Status: "Route not found",
