@@ -1,4 +1,4 @@
-const prisma = require('../helpers/prismaclient')
+const prisma = require('../utils/prismaUtil')
 const adminAvailable = require('../validations/checkavailablity')
 
 
