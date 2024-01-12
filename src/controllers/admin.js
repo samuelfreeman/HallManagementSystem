@@ -10,7 +10,7 @@ const addAdmin = async (req,res,next)=>{
                 data,
 
             })
-
+            delete admin.password
         res.status(200).json({message: 'admin Registered', admin})
     }catch(error){
         console.log(error)
@@ -18,16 +18,12 @@ const addAdmin = async (req,res,next)=>{
     next()
 }
 
-const removeAdmin = async (req,res,next)=>{
+const getAdmins = async (req,res,next)=>{
     try{
-    const data = req.params
-    const admin = await prisma.admin.findUnique({
-        where:{
-            data,
-        }
+    const admin = await prisma.admin.findMany({
         
         })
-        res.status(200).json
+        res.status(200).json({status: "successfull", admin})
     }catch(error){
         console.log(error)
     }
@@ -37,5 +33,5 @@ const removeAdmin = async (req,res,next)=>{
 
 module.exports = {
     addAdmin,
-    
+    getAdmins
 }

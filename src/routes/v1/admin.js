@@ -6,5 +6,6 @@ const {adminAvailablity} = require("../../validations/middlewares/adminSignup")
 
 
 router.post('/signUp', adminAvailablity, admin.addAdmin);
+router.get('/',admin.getAdmins)
 
 module.exports = router;
