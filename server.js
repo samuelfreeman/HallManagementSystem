@@ -10,19 +10,19 @@ const helmet = require("helmet");
 const cors = require("cors");
 const compression = require("compression");
 const bodyparser = require("body-parser");
+const indexRoute = require("./src/routes/index");
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
 
-app.use((err, req, res) => { // if person hits a wrong endpoint 
-  res.status(404).json({
-    error: err,
-    Status: "Route not found",
+app.use((error, req, res, next) => {
+  res.status(error.status).json({
+      status: error.status,
+      message: error.message
   });
 });
 
-const indexRoute = require("./src/v1/routes/index");
 // middleware for body parser
 app.use(bodyparser.json());
 app.use("/api", indexRoute);
