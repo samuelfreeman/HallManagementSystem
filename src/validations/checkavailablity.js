@@ -6,6 +6,7 @@ const adminAvailablity = async (email)=>{
         email,
     }
     })
+    if (admin === null||admin === "null")
     return admin;
 }
 
