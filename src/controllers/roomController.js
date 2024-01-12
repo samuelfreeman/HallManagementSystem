@@ -1,1 +1,1 @@
-const prisma = require('../helpers/prismaclient')
+const prisma = require('../utils/prismaUtil')
