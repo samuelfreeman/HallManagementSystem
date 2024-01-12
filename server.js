@@ -16,12 +16,12 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
 
-app.use((req,res)=> { // if person hits a wrong endpoint 
-  res.status(404).json({message:
-    "Route not found"
+app.use((error, req, res, next) => {
+  res.status(error.status).json({
+      status: error.status,
+      message: error.message
   });
 });
-
 
 // middleware for body parser
 app.use(bodyparser.json());
