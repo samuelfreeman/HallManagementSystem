@@ -3,7 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT || 8080;
-
+const {run}= require ("./src/utils/setuputil")
 const app = express(); /// Involking express to the variable app to speed up out serve
 
 const helmet = require("helmet");
@@ -25,6 +25,8 @@ app.use((error, req, res, next) => {
 
 // middleware for body parser
 app.use(bodyparser.json());
+// run admin
+run()
 app.use("/api", indexRoute);
 app.listen(PORT, () => {
   console.log("Server running on port", `${PORT}`);

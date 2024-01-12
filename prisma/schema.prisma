@@ -14,7 +14,7 @@ datasource db {
 model admin {
   id        String   @id @default(uuid()) @map("_id")
   fullname  String
-  email     String
+  email     String 
   password  String
   telephone String?
   createdAt DateTime @default(now())
