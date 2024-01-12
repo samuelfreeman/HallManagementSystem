@@ -1,24 +1,17 @@
 const prisma = require('../utils/prismaUtil')
-const adminAvailable = require('../validations/checkavailablity')
-
-
-  
+const bcrypt = require("../utils/bcrypt")
 
 const addAdmin = async (req,res,next)=>{
     try{
         const data = req.body;
-        const checkfirst = adminAvailable(data);
-
-        if(!checkfirst){
-            const admin = await prisma.admin.create({
+        data.password = await bcrypt.hash(data.password)
+        console.log(data.password)
+        const admin = await prisma.admin.create({
                 data,
 
             })
-            password = undefined
-            res.status(200).json({message: 'admin Registered', admin})
-        }
-       
 
+        res.status(200).json({message: 'admin Registered', admin})
     }catch(error){
         console.log(error)
     }

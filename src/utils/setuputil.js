@@ -1,4 +1,5 @@
 const prisma = require("../utils/prismaUtil");
+
 const data = {
   fullname: "SuperAdmin",
   email: "super@gmail.com",
@@ -14,8 +15,9 @@ exports.run = async () => {
         data,
       });
       console.log("SuperAdmin  Created:", admin);
+    }else{
+    console.log("SuperAdmin Available:",findUsers)
     }
-    console.log("SuperAdmin Available:", admin);
   } catch (error) {
     console.error(error);
   }
