@@ -1,9 +1,11 @@
 const prisma = require('../utils/prismaUtil')
 const bcrypt = require("../utils/bcrypt")
 
+
 const addAdmin = async (req,res,next)=>{
     try{
         const data = req.body;
+        
         data.password = await bcrypt.hash(data.password)
         console.log(data.password)
         const admin = await prisma.admin.create({
