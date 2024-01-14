@@ -15,17 +15,25 @@ const PORT = process.env.PORT || 8080
 //   console.log(key.export().toString("hex")); // 46e..........620
 // });
 
-const helmet = require('helmet')
-const cors = require('cors')
-const compression = require('compression')
-const bodyparser = require('body-parser')
-const { run } = require('./src/utils/setuputil')
+const helmet = require("helmet");
+const morgan = require('morgan')
+const cors = require("cors");
+const compression = require("compression");
+const bodyparser = require("body-parser");
+const indexRoute = require("./src/routes/index");
 
-const indexRoute = require('./src/routes/index')
 
-app.use(cors({ origin: true, credentials: true }))
-app.use(helmet())
-app.use(compression())
+app.use(cors({ origin: true, credentials: true }));
+app.use(helmet());
+app.use(compression());
+app.use(morgan('dev'))
+
+app.use((error, req, res, next) => {
+  res.status(error.status).json({
+      status: error.status,
+      message: error.message
+  });
+});
 app.use(morgan('dev'))
 
 app.use((error, req, res, next) => {
