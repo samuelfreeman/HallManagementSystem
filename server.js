@@ -7,14 +7,17 @@ const {run}= require ("./src/utils/setuputil")
 const app = express(); /// Involking express to the variable app to speed up out serve
 
 const helmet = require("helmet");
+const morgan = require('morgan')
 const cors = require("cors");
 const compression = require("compression");
 const bodyparser = require("body-parser");
 const indexRoute = require("./src/routes/index");
 
+
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
+app.use(morgan('dev'))
 
 app.use((error, req, res, next) => {
   res.status(error.status).json({
