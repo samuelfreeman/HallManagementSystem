@@ -41,9 +41,10 @@ const login = async (req, res, next) => {
       if (!checkPassword) {
         throw new Error("Invalid credentials");
       } else {
+        delete checkEmail.password;
         res.status(200).json({
           message: "User succesfully logged in !",
-          user: checkEmail,
+          user: checkEmail.id,
         });
       }
     }
@@ -91,6 +92,7 @@ const updateAdmin = async (req, res, next) => {
 const removeAdmin = async (req, res, next) => {
   try {
     const { id } = req.params;
+
     const admin = await deleteAdmin(id);
     res.status(200).json({
       admin,
@@ -98,6 +100,7 @@ const removeAdmin = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     logger.error(error);
+    next(error);
   }
 };
 
