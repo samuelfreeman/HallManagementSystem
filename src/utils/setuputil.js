@@ -15,8 +15,6 @@ exports.run = async () => {
         data,
       });
       console.log("SuperAdmin  Created:", admin);
-    }else{
-    console.log("SuperAdmin Available:",findUsers)
     }
   } catch (error) {
     console.error(error);

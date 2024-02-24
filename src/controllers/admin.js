@@ -9,6 +9,7 @@ const {
   deleteAdmin,
 } = require("../helpers/admin");
 
+
 const signUp = async (req, res, next) => {
   try {
     const data = req.body;
@@ -25,6 +26,7 @@ const signUp = async (req, res, next) => {
 };
 // To  make the code cleaner i can write a  middleware to check for the user email
 //  or write  a helper function to  check for the user email  but im feeling lazy so i will write it inside the controller
+
 
 const login = async (req, res, next) => {
   try {
