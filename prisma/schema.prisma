@@ -52,6 +52,8 @@ model allocation {
 model rooms {
   id         String       @id @default(uuid())
   roomnumber Int          @unique
+  status     status
+  blockName  String
   createdAt  DateTime     @default(now())
   allocation allocation[]
   hall       hall?        @relation(fields: [hallId], references: [id])
@@ -72,13 +74,6 @@ model hall {
   location String
   student  student[]
   rooms    rooms[]
-}
-
-enum blockname {
-  A
-  B
-  C
-  D
 }
 
 enum status {

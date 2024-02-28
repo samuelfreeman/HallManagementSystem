@@ -1,4 +1,5 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil');
+
 const saveDepartment = async (data) => {
   const department = await prisma.department.create({
     data,
@@ -16,7 +17,7 @@ const getDepartment = async (id) => {
 const getDepartments = async () => {
   const departments = await prisma.department.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
   });
   return departments;

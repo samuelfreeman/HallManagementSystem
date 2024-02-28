@@ -1,13 +1,13 @@
-const prisma = require("../utils/prismaUtil");
-const bcrypt = require("../utils/bcrypt");
-const logger = require("../utils/loggerUtil");
+const prisma = require('../utils/prismaUtil');
+const bcrypt = require('../utils/bcrypt');
+const logger = require('../utils/loggerUtil');
 const {
   addAdmin,
   getSingleAdmin,
   getAdmins,
   editAdmin,
   deleteAdmin,
-} = require("../helpers/admin");
+} = require('../helpers/admin');
 
 const signUp = async (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ const signUp = async (req, res, next) => {
     console.log(data.password);
     const admin = await addAdmin(data);
     delete admin.password;
-    res.status(200).json({ message: "admin Registered", admin });
+    res.status(200).json({ message: 'admin Registered', admin });
   } catch (error) {
     console.log(error);
     logger.error(error);
@@ -39,17 +39,17 @@ const login = async (req, res, next) => {
     // } else {
     const checkPassword = await bcrypt.compare(password, checkEmail.password);
     if (!checkPassword) {
-      throw new Error("Invalid credentials");
+      throw new Error('Invalid credentials');
     } else {
       delete checkEmail.password;
       res.status(200).json({
-        message: "User succesfully logged in !",
+        message: 'User succesfully logged in !',
         user: checkEmail.id,
       });
     }
     // }
   } catch (error) {
-    console.log(error);
+  next(error)
     logger.error(error);
   }
 };
@@ -57,7 +57,7 @@ const login = async (req, res, next) => {
 const loadAdmins = async (req, res, next) => {
   try {
     const admin = await getAdmins();
-    res.status(200).json({ status: "successfull", admin });
+    res.status(200).json({ status: 'successfull', admin });
   } catch (error) {
     console.log(error);
     logger.error(error);
