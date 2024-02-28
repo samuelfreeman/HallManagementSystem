@@ -9,7 +9,6 @@ const {
   deleteAdmin,
 } = require("../helpers/admin");
 
-
 const signUp = async (req, res, next) => {
   try {
     const data = req.body;
@@ -27,29 +26,28 @@ const signUp = async (req, res, next) => {
 // To  make the code cleaner i can write a  middleware to check for the user email
 //  or write  a helper function to  check for the user email  but im feeling lazy so i will write it inside the controller
 
-
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const checkEmail = await prisma.admin.findUnique({
-      where: {
-        email,
-      },
-    });
-    if (!checkEmail) {
-      throw new Error("Email not found!");
+    // const checkEmail = await prisma.admin.findUnique({
+    //   where: {
+    //     email,
+    //   },
+    // });
+    // if (!checkEmail) {
+    //   throw new Error("Email not found!");
+    // } else {
+    const checkPassword = await bcrypt.compare(password, checkEmail.password);
+    if (!checkPassword) {
+      throw new Error("Invalid credentials");
     } else {
-      const checkPassword = await bcrypt.compare(password, checkEmail.password);
-      if (!checkPassword) {
-        throw new Error("Invalid credentials");
-      } else {
-        delete checkEmail.password;
-        res.status(200).json({
-          message: "User succesfully logged in !",
-          user: checkEmail.id,
-        });
-      }
+      delete checkEmail.password;
+      res.status(200).json({
+        message: "User succesfully logged in !",
+        user: checkEmail.id,
+      });
     }
+    // }
   } catch (error) {
     console.log(error);
     logger.error(error);
