@@ -1,5 +1,5 @@
-///registering a new student in the hall assuming the have paid their fees
-const prisma = require("../utils/prismaUtil");
+/// registering a new student in the hall assuming the have paid their fees
+const prisma = require('../utils/prismaUtil');
 const {
   saveStudent,
   loadStudents,
@@ -7,10 +7,11 @@ const {
   loadStudentOption,
   removeStudent,
   updateStudent,
-} = require("../helpers/student");
+} = require('../helpers/student');
+
 exports.registerStudent = async (req, res, next) => {
   try {
-    //checking student availability in the system before trying to register a student
+    // checking student availability in the system before trying to register a student
     const data = req.body;
     const student = await saveStudent(data);
     res.status(200).json({

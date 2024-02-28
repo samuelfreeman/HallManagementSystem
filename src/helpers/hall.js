@@ -1,4 +1,4 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil');
 
 const registerHall = async (data) => {
   const hall = await prisma.hall.create({
@@ -18,7 +18,7 @@ const getHall = async (id) => {
 const getHalls = async () => {
   const hall = await prisma.hall.findMany({
     orderBy: {
-      name: "desc",
+      name: 'desc',
     },
   });
   return hall;

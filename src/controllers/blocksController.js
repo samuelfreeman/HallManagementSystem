@@ -1,4 +1,5 @@
-const prisma = require('../utils/prismaUtil')
+const prisma = require('../utils/prismaUtil');
+
 const saveBlock = async (req, res, next) => {
   try {
     const data = req.body;
@@ -44,7 +45,7 @@ const changeBlock = async (req, res, next) => {
 const deleteBlock = async (req, res, next) => {
   try {
     const { blockname } = req.params;
-     await prisma.block.delete({
+    await prisma.block.delete({
       where: {
         blockname,
       },

@@ -1,6 +1,7 @@
-const express = require("express");
-const Router = express.Router();
-const student = require("../../controllers/student ");
+const express = require('express');
 
-Router.post("/", student.registerStudent);
+const Router = express.Router();
+const student = require('../../controllers/student ');
+
+Router.post('/', student.registerStudent);
 module.exports = Router;

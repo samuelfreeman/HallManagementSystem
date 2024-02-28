@@ -1,4 +1,4 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil');
 
 const registerRoom = async (data) => {
   const room = await prisma.rooms.create({
@@ -24,7 +24,7 @@ const getRoom = async (id) => {
 const getRooms = async () => {
   const rooms = await prisma.rooms.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
   });
   return rooms;
