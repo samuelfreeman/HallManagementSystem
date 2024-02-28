@@ -37,7 +37,7 @@ const login = async (req, res, next) => {
       },
     });
     if (!checkEmail) {
-      throw new Error("Email not found!");
+      throw new Error("Email not found!");          
     } else {
       const checkPassword = await bcrypt.compare(password, checkEmail.password);
       if (!checkPassword) {
