@@ -1,0 +1,82 @@
+2024-02-24T20:42:52.792Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:43:26.044Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:44:38.730Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:44:43.142Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:44:45.548Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:45:17.602Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:45:55.789Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:46:26.787Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:46:57.691Z [31merror[39m:	
+Invalid `prisma.admin.delete()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/admin.js:39:42
+
+  36 };
+  37 
+  38 const deleteAdmin = async (id) => {
+→ 39   const admin = await prisma.admin.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-02-24T20:48:43.968Z [31merror[39m:	Id not specified!
