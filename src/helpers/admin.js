@@ -1,4 +1,4 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil');
 
 const addAdmin = async (data) => {
   const admin = await prisma.admin.create({
@@ -19,7 +19,7 @@ const getSingleAdmin = async (id) => {
 const getAdmins = async (id) => {
   const admin = await prisma.admin.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
   });
   return admin;
