@@ -29,7 +29,7 @@ const validateEmail = async (req, res, next) => {
       //  but this is my own so yeah 👍
       throw new customError(404, 'Email not found!');
     } else {
-      req.personsPassword = {
+      req.person = {
         id: admin.id,
         password: admin.password,
       };

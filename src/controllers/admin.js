@@ -25,14 +25,14 @@ const signUp = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { password } = req.body;
-    const systemPassword = req.personsPassword.password;
+    const systemPassword = req.person.password;
     const checkPassword = await bcrypt.compare(password, systemPassword);
     if (!checkPassword) {
       throw new Error('Invalid credentials');
     } else {
       res.status(200).json({
         message: 'User succesfully logged in !',
-        id: req.personsPassword.id,
+        id: req.person.id,
       });
     }
   } catch (error) {
