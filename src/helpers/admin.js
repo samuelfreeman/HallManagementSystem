@@ -16,7 +16,7 @@ const getSingleAdmin = async (id) => {
   return admin;
 };
 
-const getAdmins = async (id) => {
+const getAdmins = async () => {
   const admin = await prisma.admin.findMany({
     orderBy: {
       createdAt: 'desc',
