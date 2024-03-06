@@ -29,6 +29,7 @@ const validateEmail = async (req, res, next) => {
       //  but this is my own so yeah 👍
       throw new customError(404, 'Email not found!');
     } else {
+      req.userEmail = admin.id
       next();
     }
   } catch (error) {
