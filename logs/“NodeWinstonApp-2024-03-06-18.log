@@ -1,0 +1,133 @@
+2024-03-06T18:11:28.967Z [31merror[39m:	
+Invalid `prisma.rooms.create()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/room.js:4:35
+
+  1 const prisma = require('../utils/prismaUtil');
+  2 
+  3 const registerRoom = async (data) => {
+→ 4   const room = await prisma.rooms.create({
+        data: [
+          {
+            roomNumber: 1,
+            status: 'Occupied',
+            blockName: 'A',
+            hallId: 'e0dc97dd-0027-4aae-a3f8-76d2db201595'
+          }
+        ]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      })
+
+Argument data: Got invalid value 
+[
+  {
+    roomNumber: 1,
+    status: 'Occupied',
+    blockName: 'A',
+    hallId: 'e0dc97dd-0027-4aae-a3f8-76d2db201595'
+  }
+]
+on prisma.createOnerooms. Provided List<Json>, expected roomsCreateInput or roomsUncheckedCreateInput:
+type roomsCreateInput {
+  id?: String
+  roomnumber: Int
+  status: status
+  blockName: String
+  createdAt?: DateTime
+  allocation?: allocationCreateNestedManyWithoutRoomsInput
+  hall?: hallCreateNestedOneWithoutRoomsInput
+}
+type roomsCreateInput {
+  id?: String
+  roomnumber: Int
+  status: status
+  blockName: String
+  createdAt?: DateTime
+  allocation?: allocationCreateNestedManyWithoutRoomsInput
+  hall?: hallCreateNestedOneWithoutRoomsInput
+}
+
+
+2024-03-06T18:12:38.406Z [31merror[39m:	
+Invalid `prisma.rooms.createMany()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/room.js:10:35
+
+   7   return room;
+   8 };
+   9 const registerRooms = async (data) => {
+→ 10   const room = await prisma.rooms.createMany({
+         data: {
+           '0': {
+             roomNumber: 1,
+             ~~~~~~~~~~
+             status: 'Occupied',
+             blockName: 'A',
+             hallId: 'e0dc97dd-0027-4aae-a3f8-76d2db201595',
+       +     roomnumber: Int,
+       ?     id?: String,
+       ?     createdAt?: DateTime
+           }
+         }
+       })
+
+Unknown arg `roomNumber` in data.0.roomNumber for type roomsCreateManyInput. Did you mean `roomnumber`?
+Argument roomnumber for data.0.roomnumber is missing.
+
+Note: Lines with + are required, lines with ? are optional.
+
+2024-03-06T18:12:52.409Z [31merror[39m:	
+Invalid `prisma.rooms.createMany()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/room.js:10:35
+
+   7   return room;
+   8 };
+   9 const registerRooms = async (data) => {
+→ 10   const room = await prisma.rooms.createMany(
+The column `status` does not exist in the current database.
+2024-03-06T18:18:31.736Z [31merror[39m:	
+Invalid `prisma.student.create()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/student.js:4:40
+
+  1 const prisma = require('../utils/prismaUtil');
+  2 
+  3 const saveStudent = async (data) => {
+→ 4   const student = await prisma.student.create({
+        data: {
+          profile: 'picture',
+          fullname: 'samuel',
+          ~~~~~~~~
+          email: 'Come on!',
+          password: '938479',
+          gender: 'M',
+          level: '200',
+                 ~~~~~
+          telephone: '0241520681',
+          departmentId: '9231acdb-40a6-48c4-8946-b5a43029c96e',
+          hallId: 'e0dc97dd-0027-4aae-a3f8-76d2db201595',
+      +   fullName: String,
+      ?   studentId?: String,
+      ?   createdAt?: DateTime,
+      ?   updatedAt?: DateTime,
+      ?   allocation?: {
+      ?     create?: allocationCreateWithoutStudentInput | allocationUncheckedCreateWithoutStudentInput,
+      ?     connectOrCreate?: allocationCreateOrConnectWithoutStudentInput,
+      ?     connect?: allocationWhereUniqueInput
+      ?   }
+        }
+      })
+
+Unknown arg `fullname` in data.fullname for type studentUncheckedCreateInput. Did you mean `fullName`?
+Argument level: Got invalid value '200' on prisma.createOnestudent. Provided String, expected Int.
+Argument fullName for data.fullName is missing.
+
+Note: Lines with + are required, lines with ? are optional.
+
+2024-03-06T18:31:48.093Z [31merror[39m:	Vacant is not defined
+2024-03-06T18:44:29.829Z [31merror[39m:	
+Invalid `prisma.student.create()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/helpers/student.js:4:40
+
+  1 const prisma = require('../utils/prismaUtil');
+  2 
+  3 const saveStudent = async (data) => {
+→ 4   const student = await prisma.student.create(
+Unique constraint failed on the fields: (`gender`)
