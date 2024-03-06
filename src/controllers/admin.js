@@ -24,7 +24,7 @@ const signUp = async (req, res, next) => {
     logger.error(error)
     next()
   }
-}
+};
 
 const login = async (req, res, next) => {
   try {
