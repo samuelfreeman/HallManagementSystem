@@ -1,4 +1,3 @@
-const prisma = require('../utils/prismaUtil');
 const bcrypt = require('../utils/bcrypt');
 const logger = require('../utils/loggerUtil');
 const {
@@ -18,7 +17,6 @@ const signUp = async (req, res, next) => {
     delete admin.password;
     res.status(200).json({ message: 'admin Registered', admin });
   } catch (error) {
-    console.log(error);
     logger.error(error);
     next();
   }
@@ -26,28 +24,19 @@ const signUp = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    // const checkEmail = await prisma.admin.findUnique({
-    //   where: {
-    //     email,
-    //   },
-    // });
-    // if (!checkEmail) {
-    //   throw new Error("Email not found!");
-    // } else {
-    const checkPassword = await bcrypt.compare(password, checkEmail.password);
+    const { password } = req.body;
+    const systemPassword = req.person.password;
+    const checkPassword = await bcrypt.compare(password, systemPassword);
     if (!checkPassword) {
       throw new Error('Invalid credentials');
     } else {
-      delete checkEmail.password;
       res.status(200).json({
         message: 'User succesfully logged in !',
-        user: checkEmail.id,
+        id: req.person.id,
       });
     }
-    // }
   } catch (error) {
-  next(error)
+    next(error);
     logger.error(error);
   }
 };
@@ -57,7 +46,7 @@ const loadAdmins = async (req, res, next) => {
     const admin = await getAdmins();
     res.status(200).json({ status: 'successfull', admin });
   } catch (error) {
-    console.log(error);
+    next(error);
     logger.error(error);
   }
 };
@@ -70,7 +59,7 @@ const loadSingleAdmin = async (req, res, next) => {
       admin,
     });
   } catch (error) {
-    console.log(error);
+    next(error);
     logger.error(error);
   }
 };
@@ -83,7 +72,7 @@ const updateAdmin = async (req, res, next) => {
       admin,
     });
   } catch (error) {
-    console.log(error);
+    next(error);
     logger.error(error);
   }
 };
@@ -96,7 +85,6 @@ const removeAdmin = async (req, res, next) => {
       admin,
     });
   } catch (error) {
-    console.log(error);
     logger.error(error);
     next(error);
   }
