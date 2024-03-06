@@ -23,7 +23,7 @@ const getDepartments = async () => {
   return departments;
 };
 
-const editDepartments = async (id) => {
+const editDepartments = async (id, data) => {
   const department = await prisma.department.update({
     where: { id },
     data,

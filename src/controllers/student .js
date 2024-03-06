@@ -1,5 +1,5 @@
 /// registering a new student in the hall assuming the have paid their fees
-const prisma = require('../utils/prismaUtil');
+const logger = require('../utils/loggerUtil');
 const {
   saveStudent,
   loadStudents,
@@ -18,6 +18,7 @@ exports.registerStudent = async (req, res, next) => {
       student,
     });
   } catch (error) {
+    logger.error(error);
     next(error);
   }
 };
@@ -28,6 +29,7 @@ exports.getAllstudents = async (req, res, next) => {
       students,
     });
   } catch (error) {
+    logger.error(error);
     next(error);
   }
 };
@@ -39,6 +41,7 @@ exports.getSingleStudent = async (req, res, next) => {
       student,
     });
   } catch (error) {
+    logger.error(error);
     next(error);
   }
 };
@@ -50,6 +53,7 @@ exports.deleteStudent = async (req, res, next) => {
       student,
     });
   } catch (error) {
+    logger.error(error);
     next(error);
   }
 };
@@ -62,6 +66,7 @@ exports.editStudent = async (req, res, next) => {
       student,
     });
   } catch (error) {
+    logger.error(error);
     next(error);
   }
 };
