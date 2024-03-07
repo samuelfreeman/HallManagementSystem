@@ -31,7 +31,7 @@ model student {
   fullName     String
   email        String?
   password     String
-  gender       String      @unique
+  gender       String      
   level        Int
   telephone    String
   createdAt    DateTime    @default(now())
