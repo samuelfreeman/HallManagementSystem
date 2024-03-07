@@ -1,9 +1,3 @@
-/* 
-To do:
-1. Endpoint to get rooms based on  status : Occupied, Vacant, Partially_Occupied
-2. Error handler to check for double registeration of room
-*/
-
 const {
   registerRoom,
   registerRooms,
@@ -20,9 +14,9 @@ const logger = require("../utils/loggerUtil");
 exports.saveRoom = async (req, res, next) => {
   try {
     const data = req.body;
-     data.status ="Vacant"
+    data.status = "Vacant";
     const room = await registerRoom(data);
-    res.status(200).json({
+    res.status(201).json({
       room,
     });
   } catch (error) {
@@ -67,6 +61,20 @@ exports.getAllRooms = async (req, res, next) => {
     next(error);
   }
 };
+exports.noOfRoomsByStatus = async (req, res, next) => {
+  try {
+    const roomsGroupedByStatus = await prisma.rooms.groupBy({
+      by: ["status", "blockName"],
+      _count: true,
+    });
+    res.status(200).json({
+      roomsGroupedByStatus,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
 
 exports.getAvailableRooms = async (req, res, next) => {
   try {
@@ -87,6 +95,26 @@ exports.getAvailableRooms = async (req, res, next) => {
     res.status(200).json({
       room,
     });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
+
+exports.getRoomsByStatus = async (req, res, next) => {
+  try {
+    const { status } = req.params;
+    const validStatus = ["Vacant", "Partially_Occupied", "Occupied"];
+    if (!validStatus.includes(status)) {
+      throw new Error("Please Enter the right option");
+    } else {
+      const rooms = await prisma.rooms.findMany({
+        where: { status },
+      });
+      res.status(200).json({
+        rooms,
+      });
+    }
   } catch (error) {
     logger.error(error);
     next(error);
