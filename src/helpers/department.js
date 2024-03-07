@@ -1,4 +1,4 @@
-const prisma = require('../utils/prismaUtil');
+const prisma = require("../utils/prismaUtil");
 
 const saveDepartment = async (data) => {
   const department = await prisma.department.create({
@@ -11,13 +11,29 @@ const getDepartment = async (id) => {
     where: {
       id,
     },
+    include: {
+      _count: {
+        select: {
+          student: true,
+        },
+      },
+      student: true,
+    },
   });
   return department;
 };
 const getDepartments = async () => {
   const departments = await prisma.department.findMany({
     orderBy: {
-      createdAt: 'desc',
+      createdAt: "desc",
+    },
+    include: {
+      _count: {
+        select: {
+          student: true,
+        },
+      },
+      student: true,
     },
   });
   return departments;

@@ -4,7 +4,7 @@ const prisma = require("../utils/prismaUtil");
 To do:
 1. Error handeler to check for allocating a student to  an Occupied  room
 2. Error handeler to make sure student hasnt already been already allocated to a room
-3. Error handeler
+3. Endpoint to update allocation information which is like to change a student ,or to remove a student from a room 
 
 */
 
