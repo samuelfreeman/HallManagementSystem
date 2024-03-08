@@ -7,7 +7,7 @@ generator client {
 
 generator erd {
   provider = "prisma-erd-generator"
-  output = "../ERD.png"
+  output = "./ERD.png"
 }
 datasource db {
   provider = "postgres"
@@ -36,8 +36,9 @@ model student {
   telephone    String
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
-  department   department? @relation(fields: [departmentId], references: [id])
-  departmentId String?
+  department   String
+  // department   department? @relation(fields: [departmentId], references: [id])
+  // departmentId String?
   allocation   allocation?
   hall         hall?       @relation(fields: [hallId], references: [id])
   hallId       String?
@@ -64,13 +65,13 @@ model rooms {
   hallId     String?
 }
 
-model department {
-  id        String    @id @default(uuid())
-  name      String
-  student   student[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-}
+// model department {
+//   id        String    @id @default(uuid())
+//   name      String
+//   student   student[]
+//   createdAt DateTime  @default(now())
+//   updatedAt DateTime  @updatedAt
+// }
 
 model hall {
   id       String    @id @default(uuid())
@@ -85,4 +86,5 @@ enum status {
   Occupied
   Partially_Occupied
 }
+
 
