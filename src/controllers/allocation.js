@@ -8,11 +8,7 @@ To do:
 
 */
 
-
-
-
-
-exports.allocation = async (req, res, next) => {
+exports.saveAllocation = async (req, res, next) => {
   try {
     const data = req.body;
     const allocation = await prisma.allocation.create({
@@ -30,17 +26,83 @@ exports.allocation = async (req, res, next) => {
 exports.findAllocationById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const allocation = prisma.allocation.findUnique({
+    const allocation = await prisma.allocation.findUnique({
       where: {
         id,
       },
     });
-  res.status(200).json({
-     allocationDetails:allocation
-  })
+    res.status(200).json({
+      allocationDetails: allocation,
+    });
   } catch (error) {
     logger.error(error);
     next(error);
   }
 };
 
+exports.updateAllocation = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const allocation = await prisma.allocation.update({
+      where: {
+        id,
+      },
+      data,
+    });
+    res.status(200).json({
+      allocation,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
+
+exports.getAllAlacocation = async (req, res, next) => {
+  try {
+    const allocations = await prisma.allocation.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.status(200).json({
+      allocations,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
+
+exports.getAnalytics = async (req, res, next) => {
+  try {
+    const allocation = await prisma.allocation.groupBy({
+      by: ["roomsId", "studentId"],
+      _count: true,
+    });
+    res.status(200).json({
+      allocation,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
+
+exports.deleteAllocation = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const allocation = await prisma.allocation.delete({
+      where: {
+        id,
+      },
+    });
+    res.status(200).json({
+      allocation,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
