@@ -6,6 +6,8 @@ const {
   editHall,
   removeHall,
 } = require("../helpers/hall");
+const prisma = require("../utils/prismaUtil");
+
 exports.saveHall = async (req, res, next) => {
   try {
     const data = req.body;
