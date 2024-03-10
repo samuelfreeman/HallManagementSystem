@@ -7,6 +7,13 @@ const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT || 8080;
 
+// const { generateKey } = require("node:crypto");
+
+// const code = generateKey("hmac", { length: 400 }, (err, key) => {
+//   if (err) throw err;
+//   console.log(key.export().toString("hex")); // 46e..........620
+// });
+
 const helmet = require("helmet");
 const cors = require("cors");
 const compression = require("compression");
@@ -14,9 +21,6 @@ const bodyparser = require("body-parser");
 const { run } = require("./src/utils/setuputil");
 
 const indexRoute = require("./src/routes/index");
-
-
-
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
@@ -32,7 +36,6 @@ app.use("/api", indexRoute);
 // always make sure to put error middleware right after the route handler
 // or else it will throw and html ... trust me 😉
 
-
 app.get("/test-error", (req, res) => {
   throw new Error("This is an Error");
 });
@@ -44,7 +47,6 @@ app.use((err, req, res, next) => {
     error: err.message,
   });
 });
-
 
 app.listen(PORT, () => {
   console.log("Server running on port", `${PORT}`);
