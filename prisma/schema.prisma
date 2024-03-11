@@ -7,8 +7,9 @@ generator client {
 
 generator erd {
   provider = "prisma-erd-generator"
-  output = "./ERD.png"
+  output   = "./ERD.png"
 }
+
 datasource db {
   provider = "postgres"
   url      = env("DATABASE_URL")
@@ -26,22 +27,21 @@ model admin {
 }
 
 model student {
-  studentId    String      @id @default(uuid())
-  profile      String
-  fullName     String
-  email        String?
-  password     String
-  gender       String      
-  level        Int
-  telephone    String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  department   String
-  // department   department? @relation(fields: [departmentId], references: [id])
-  // departmentId String?
-  allocation   allocation?
-  hall         hall?       @relation(fields: [hallId], references: [id])
-  hallId       String?
+  studentId   String       @id @default(uuid())
+  profile     String
+  fullName    String
+  email       String?
+  password    String
+  gender      String
+  level       Int
+  telephone   String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  department  String?
+  allocation  allocation?
+  hall        hall?        @relation(fields: [hallId], references: [id])
+  hallId      String?
+  roomRequest roomRequest?
 }
 
 model allocation {
@@ -65,13 +65,14 @@ model rooms {
   hallId     String?
 }
 
-// model department {
-//   id        String    @id @default(uuid())
-//   name      String
-//   student   student[]
-//   createdAt DateTime  @default(now())
-//   updatedAt DateTime  @updatedAt
-// }
+model roomRequest {
+  id               String   @id @default(uuid())
+  student          student? @relation(fields: [studentStudentId], references: [studentId])
+  studentStudentId String?  @unique
+  status           options
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
 
 model hall {
   id       String    @id @default(uuid())
@@ -87,4 +88,8 @@ enum status {
   Partially_Occupied
 }
 
-
+enum options {
+  Rejected
+  Approved
+  Pending
+}
