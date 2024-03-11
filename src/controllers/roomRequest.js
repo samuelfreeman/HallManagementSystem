@@ -39,6 +39,7 @@ exports.getRequests = async (req, res, next) => {
 exports.getRequestsByStatus = async (req, res, next) => {
   try {
     const status = req.params;
+
     const requests = await prisma.roomRequest.findMany({
       where: {
         status,
@@ -53,4 +54,17 @@ exports.getRequestsByStatus = async (req, res, next) => {
   }
 };
 
-
+exports.getAnalytics = async (req, res, next) => {
+  try {
+    const requests = await prisma.roomRequest.groupBy({
+      by: ["status"],
+      _count: true,
+    });
+    res.status(200).json({
+      requests,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
