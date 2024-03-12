@@ -88,5 +88,19 @@ exports.updateRoomrequest = async (req, res, next) => {
   }
 };
 
-
-
+exports.deleteRoomRequest = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const request = await prisma.roomRequest.delete({
+      where: {
+        id,
+      },
+    });
+    res.status(200).json({
+      request,
+    });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
