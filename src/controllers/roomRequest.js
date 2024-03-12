@@ -1,4 +1,3 @@
-const e = require("express");
 const logger = require("../utils/loggerUtil");
 const prisma = require("../utils/prismaUtil");
 
@@ -82,6 +81,25 @@ exports.updateRoomrequest = async (req, res, next) => {
     res.status(200).json({
       requests,
     });
+  } catch (error) {
+    logger.error(error);
+    next(error);
+  }
+};
+exports.getRequest_by_studentId = async (req, res, next) => {
+  try {
+    const { studentId } = req.params;
+    const request = await prisma.roomRequest.findFirst({
+      where: {
+        StudentId: studentId,
+      },
+      include: {
+        student: true,
+      },
+    });
+    res.status(200).json({
+      request
+    })
   } catch (error) {
     logger.error(error);
     next(error);
