@@ -5,9 +5,6 @@ const app = express(); /// Involking express to the variable app to speed up out
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 
-const morgan = require("morgan");
-
-
 dotenv.config()
 const PORT = process.env.PORT || 8080
 
@@ -19,7 +16,7 @@ const PORT = process.env.PORT || 8080
 // });
 
 const helmet = require("helmet");
-const morgan = require('morgan')
+
 const cors = require("cors");
 const compression = require("compression");
 const bodyparser = require("body-parser");
