@@ -32,8 +32,6 @@ route.use('/department', department)
 
 route.use('/room', room)
 
-route.use("/room", room);
-
 route.use("/request",requests)
 
 module.exports = route
