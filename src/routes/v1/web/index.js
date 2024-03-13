@@ -15,8 +15,6 @@ const department = require('./department')
 
 const room = require('./rooms')
 
-const room = require("./rooms");
-
 const requests = require("./requests");
 /// using our route middleware
 
