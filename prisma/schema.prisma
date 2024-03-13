@@ -66,12 +66,12 @@ model rooms {
 }
 
 model roomRequest {
-  id               String   @id @default(uuid())
-  student          student? @relation(fields: [StudentId], references: [studentId])
+  id        String   @id @default(uuid())
+  student   student? @relation(fields: [StudentId], references: [studentId])
   StudentId String?  @unique
-  status           options
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  status    options
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model hall {

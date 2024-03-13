@@ -1,25 +1,25 @@
-const express = require("express");
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
 
-const admin = require("../../../controllers/admin");
+const admin = require('../../../controllers/admin')
 const {
   adminAvailablity,
   validateEmail,
-} = require("../../../validations/middlewares/adminSignup");
+} = require('../../../validations/middlewares/adminSignup')
 
-router.get("/loggout", admin.logout);
+router.get('/loggout', admin.logout)
 
-router.post("/signUp", adminAvailablity, admin.signUp);
+router.post('/signUp', adminAvailablity, admin.signUp)
 
-router.post("/login", validateEmail, admin.login);
+router.post('/login', validateEmail, admin.login)
 
-router.get("/", admin.loadAdmins);
+router.get('/', admin.loadAdmins)
 
-router.get("/:id", admin.loadSingleAdmin);
+router.get('/:id', admin.loadSingleAdmin)
 
-router.patch("/:id", admin.updateAdmin);
+router.patch('/:id', admin.updateAdmin)
 
-router.delete("/:id", admin.removeAdmin);
+router.delete('/:id', admin.removeAdmin)
 
-module.exports = router;
+module.exports = router

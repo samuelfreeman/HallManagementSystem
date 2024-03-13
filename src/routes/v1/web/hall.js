@@ -1,17 +1,17 @@
-const express = require("express");
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
 
-const hall = require("../../../controllers/hall");
+const hall = require('../../../controllers/hall')
 
-router.post("/", hall.saveHall);
+router.post('/', hall.saveHall)
 
-router.get("/", hall.getAllHalls);
+router.get('/', hall.getAllHalls)
 
-router.get("/:id", hall.getSingleHall);
+router.get('/:id', hall.getSingleHall)
 
-router.patch("/:id", hall.updateHall);
+router.patch('/:id', hall.updateHall)
 
-router.delete("/:id", hall.deleteHall);
+router.delete('/:id', hall.deleteHall)
 
-module.exports = router;
+module.exports = router

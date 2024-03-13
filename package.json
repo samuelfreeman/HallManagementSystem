@@ -8,7 +8,16 @@
     "dev": "nodemon",
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
-    "lint": "npx eslint --fix ./"
+    "lint": "npx eslint --fix ./",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && git diff --quiet || (echo 'Linting failed, aborting push.' && exit 1)"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +33,7 @@
     "express-validator": "^7.0.1",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "prettier": "3.2.5",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1"
   },
@@ -31,8 +41,11 @@
     "@mermaid-js/mermaid-cli": "^10.8.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.25.2",
     "morgan": "^1.10.0",
+    "husky": "^9.0.11",
+
     "nodemon": "^2.0.22",
     "prisma": "^4.15.0",
     "prisma-erd-generator": "^1.11.2"
