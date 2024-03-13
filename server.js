@@ -4,7 +4,9 @@ const express = require('express')
 const app = express(); /// Involking express to the variable app to speed up out serve
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+
 const morgan = require("morgan");
+
 
 dotenv.config()
 const PORT = process.env.PORT || 8080
@@ -27,22 +29,10 @@ const indexRoute = require("./src/routes/index");
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());
+
 app.use(morgan('dev'))
 
-app.use((error, req, res, next) => {
-  res.status(error.status).json({
-      status: error.status,
-      message: error.message
-  });
-});
-app.use(morgan('dev'))
 
-app.use((error, req, res, next) => {
-  res.status(error.status).json({
-      status: error.status,
-      message: error.message
-  });
-});
 
 // middleware for body parser
 app.use(bodyparser.json())
