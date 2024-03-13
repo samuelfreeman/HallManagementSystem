@@ -3,6 +3,7 @@ const express = require("express");
 
 const app = express(); /// Involking express to the variable app to speed up out serve
 const dotenv = require("dotenv");
+const morgan = require("morgan");
 
 dotenv.config();
 const PORT = process.env.PORT || 8080;
