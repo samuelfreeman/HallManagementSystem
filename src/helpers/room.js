@@ -1,17 +1,17 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil')
 
 const registerRoom = async (data) => {
   const room = await prisma.rooms.create({
     data,
-  });
-  return room;
-};
+  })
+  return room
+}
 const registerRooms = async (data) => {
   const room = await prisma.rooms.createMany({
     data,
-  });
-  return room;
-};
+  })
+  return room
+}
 const getRoom = async (id) => {
   const room = await prisma.rooms.findUnique({
     where: {
@@ -24,36 +24,36 @@ const getRoom = async (id) => {
         },
       },
     },
-  });
-  return room;
-};
+  })
+  return room
+}
 
 const getRooms = async () => {
   const rooms = await prisma.rooms.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
-  });
-  return rooms;
-};
+  })
+  return rooms
+}
 const editRooms = async (id, data) => {
   const room = await prisma.rooms.update({
     where: {
       id,
     },
     data,
-  });
-  return room;
-};
+  })
+  return room
+}
 
 const removeRoom = async (id) => {
   const room = await prisma.rooms.delete({
     where: {
       id,
     },
-  });
-  return room;
-};
+  })
+  return room
+}
 
 module.exports = {
   registerRoom,
@@ -62,4 +62,4 @@ module.exports = {
   getRooms,
   editRooms,
   removeRoom,
-};
+}

@@ -1,34 +1,34 @@
-const prisma = require("../utils/prismaUtil");
+const prisma = require('../utils/prismaUtil')
 
 const saveStudent = async (data) => {
   const student = await prisma.student.create({
     data,
-  });
-  return student;
-};
+  })
+  return student
+}
 
 const loadStudents = async () => {
-  const student = await prisma.student.findMany({});
-  return student;
-};
+  const student = await prisma.student.findMany({})
+  return student
+}
 
 const loadStudent = async (studentId) => {
   const student = await prisma.student.findUnique({
     where: {
       studentId,
     },
-  });
-  return student;
-};
+  })
+  return student
+}
 
 const removeStudent = async (studentId) => {
   const student = await prisma.student.delete({
     where: {
       studentId,
     },
-  });
-  return student;
-};
+  })
+  return student
+}
 
 const updateStudent = async (studentId, data) => {
   const student = await prisma.student.update({
@@ -36,9 +36,9 @@ const updateStudent = async (studentId, data) => {
       studentId,
     },
     data,
-  });
-  return student;
-};
+  })
+  return student
+}
 
 module.exports = {
   saveStudent,
@@ -46,4 +46,4 @@ module.exports = {
   loadStudent,
   removeStudent,
   updateStudent,
-};
+}

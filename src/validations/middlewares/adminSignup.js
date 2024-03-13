@@ -1,47 +1,45 @@
-const prisma = require('../../utils/prismaUtil');
-const logger = require('../../utils/loggerUtil');
-const customError = require('../../utils/customErrorClass');
+const prisma = require('../../utils/prismaUtil')
+const logger = require('../../utils/loggerUtil')
+const CustomError = require('../../utils/customErrorClass')
 
 const adminAvailablity = async (req, res, next) => {
-  const { email } = req.body;
+  const { email } = req.body
   const admin = await prisma.admin.findUnique({
     where: {
       email,
     },
-  });
+  })
   if (admin) {
-    res.status(400).json({ message: 'Admin already exists!' });
+    res.status(400).json({ message: 'Admin already exists!' })
   } else {
-    next();
+    next()
   }
-};
+}
 
 const validateEmail = async (req, res, next) => {
   try {
-    const { email } = req.body;
+    const { email } = req.body
     const admin = await prisma.admin.findUnique({
       where: {
         email,
       },
-    });
+    })
     if (!admin) {
-      //  so i think this is how to use chips error class handler
-      //  but this is my own so yeah 👍
-      throw new customError(404, 'Email not found!');
+      throw new CustomError(404, 'Email not found!')
     } else {
       req.person = {
         id: admin.id,
         password: admin.password,
-      };
-      next();
+      }
+      next()
     }
   } catch (error) {
-    logger.error(error);
-    next(error);
+    logger.error(error)
+    next(error)
   }
-};
+}
 
 module.exports = {
   adminAvailablity,
   validateEmail,
-};
+}
