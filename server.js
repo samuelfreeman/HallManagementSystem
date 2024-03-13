@@ -7,7 +7,7 @@ const morgan = require("morgan");
 
 dotenv.config()
 const PORT = process.env.PORT || 8080
-
+const {run} = require("./src/utils/setuputil")
 // const { generateKey } = require("node:crypto");
 
 // const code = generateKey("hmac", { length: 400 }, (err, key) => {
