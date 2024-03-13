@@ -19,12 +19,6 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "husky": {
-  "hooks": {
-    "pre-push": "npm run lint && git diff --quiet || (echo 'Linting failed, aborting push.' && exit 1)"
-  }
-},
-
   "author": "",
   "license": "ISC",
   "dependencies": {
