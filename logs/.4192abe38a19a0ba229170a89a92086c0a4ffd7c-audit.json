@@ -6,26 +6,6 @@
     "auditLog": "logs/.4192abe38a19a0ba229170a89a92086c0a4ffd7c-audit.json",
     "files": [
         {
-            "date": 1708887261609,
-            "name": "logs/“NodeWinstonApp-2024-02-25-18.log",
-            "hash": "d276f7cc5ff7f2d8bf4329ab3a182e2c4fa25a3efd32efaa1e0c3ae82a4b2760"
-        },
-        {
-            "date": 1708888290078,
-            "name": "logs/“NodeWinstonApp-2024-02-25-19.log",
-            "hash": "840ad9deec94d2995b41384206a1986cc83dffc731c2a006e430989e04815874"
-        },
-        {
-            "date": 1709091569564,
-            "name": "logs/“NodeWinstonApp-2024-02-28-03.log",
-            "hash": "81503b114954976d8aed3efc258df447afb191045b828fa309255a0d0af85423"
-        },
-        {
-            "date": 1709093084630,
-            "name": "logs/“NodeWinstonApp-2024-02-28-04.log",
-            "hash": "4e3554358329f508127e11d78f455cbdf3580c4c0768f0b89b143fb5eb3aaa8e"
-        },
-        {
             "date": 1709136252998,
             "name": "logs/“NodeWinstonApp-2024-02-28-16.log",
             "hash": "d1caa6494894c4b5850793951fa92043992e24593b70dd1dd3fa642550123343"
@@ -89,6 +69,16 @@
             "date": 1710078371310,
             "name": "logs/“NodeWinstonApp-2024-03-10-13.log",
             "hash": "1036e452b7cdc6478d4bf3403969e850a2605a3c72ef1b2d2aa8eaa816a99ea3"
+        },
+        {
+            "date": 1710340449004,
+            "name": "logs/“NodeWinstonApp-2024-03-13-14.log",
+            "hash": "32a5029c21498512afd36bb935485c221b90af92a5a1a938a39c5887ee3b0027"
+        },
+        {
+            "date": 1710342809369,
+            "name": "logs/“NodeWinstonApp-2024-03-13-15.log",
+            "hash": "3d5ea9918515c119860e4f4200dde7e005157202109b712d6c240728042fbb92"
         }
     ],
     "hashType": "sha256"
