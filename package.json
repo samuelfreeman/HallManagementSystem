@@ -19,6 +19,12 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
+  "husky": {
+  "hooks": {
+    "pre-push": "npm run lint && git diff --quiet || (echo 'Linting failed, aborting push.' && exit 1)"
+  }
+},
+
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -43,7 +49,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.25.2",
-    "morgan": "^1.10.0",
+    "husky": "^9.0.11",
     "nodemon": "^2.0.22",
     "prisma": "^4.15.0",
     "prisma-erd-generator": "^1.11.2"

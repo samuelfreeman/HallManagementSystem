@@ -15,7 +15,9 @@ const department = require('./department')
 
 const room = require('./rooms')
 
-const requests = require('./requests')
+const room = require("./rooms");
+
+const requests = require("./requests");
 /// using our route middleware
 
 route.use('/admin', adminRoute)
@@ -30,6 +32,8 @@ route.use('/department', department)
 
 route.use('/room', room)
 
-route.use('/request', requests)
+route.use("/room", room);
+
+route.use("/request",requests)
 
 module.exports = route
