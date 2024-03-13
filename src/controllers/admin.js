@@ -14,7 +14,7 @@ const signUp = async (req, res, next) => {
     const data = req.body;
     data.password = await bcrypt.hash(data.password);
     console.log(data.password);
-    const admin = await addAdmin(data);
+    const admin = await addAdmin(admin);
     const token = signToken({ id: admin.id });
     delete admin.password;
     res
