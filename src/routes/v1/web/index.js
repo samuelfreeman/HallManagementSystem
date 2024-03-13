@@ -13,9 +13,9 @@ const allocation = require('./allocation')
 
 const department = require('./department')
 
-const room = require("./rooms");
+const room = require('./rooms')
 
-const requests = require("./requests");
+const requests = require('./requests')
 /// using our route middleware
 
 route.use('/admin', adminRoute)

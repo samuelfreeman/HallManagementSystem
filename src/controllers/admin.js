@@ -11,12 +11,12 @@ const {
 
 const signUp = async (req, res, next) => {
   try {
-    const data = req.body;
-    data.password = await bcrypt.hash(data.password);
-    console.log(data.password);
-    const admin = await addAdmin(data);
-    const token = signToken({ id: admin.id });
-    delete admin.password;
+    const data = req.body
+    data.password = await bcrypt.hash(data.password)
+    console.log(data.password)
+    const admin = await addAdmin(data)
+    const token = signToken({ id: admin.id })
+    delete admin.password
     res
       .status(200)
       .json({ message: 'admin Registered', admin, acessToken: token })
@@ -24,7 +24,7 @@ const signUp = async (req, res, next) => {
     logger.error(error)
     next()
   }
-};
+}
 
 const login = async (req, res, next) => {
   try {
