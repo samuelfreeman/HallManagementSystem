@@ -1,9 +1,11 @@
 /// Importing express package and other middlewares
 const express = require('express')
 
-const app = express(); /// Involking express to the variable app to speed up out serve
-const dotenv = require("dotenv");
-const morgan = require("morgan");
+const app = express() /// Involking express to the variable app to speed up out serve
+const dotenv = require('dotenv')
+const morgan = require('morgan')
+
+
 
 dotenv.config()
 const PORT = process.env.PORT || 8080
@@ -15,21 +17,18 @@ const {run} = require("./src/utils/setuputil")
 //   console.log(key.export().toString("hex")); // 46e..........620
 // });
 
-const helmet = require("helmet");
+const helmet = require('helmet')
+const morgan = require('morgan')
+const cors = require('cors')
+const compression = require('compression')
+const bodyparser = require('body-parser')
+const indexRoute = require('./src/routes/index')
 
-const cors = require("cors");
-const compression = require("compression");
-const bodyparser = require("body-parser");
-const indexRoute = require("./src/routes/index");
-
-
-app.use(cors({ origin: true, credentials: true }));
-app.use(helmet());
-app.use(compression());
+app.use(cors({ origin: true, credentials: true }))
+app.use(helmet())
+app.use(compression())
 
 app.use(morgan('dev'))
-
-
 
 // middleware for body parser
 app.use(bodyparser.json())
@@ -54,5 +53,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(PORT, () => {
-  console.log('Server running on port', `${PORT}`)
+  console.log('Server running on port', `http://localhost:${PORT}`)
 })
