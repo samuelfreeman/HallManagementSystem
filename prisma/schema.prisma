@@ -34,7 +34,7 @@ model student {
   password    String
   gender      String
   level       Int
-  telephone   String
+  telephone   String       @unique
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   department  String?

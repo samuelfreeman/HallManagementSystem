@@ -1,14 +1,16 @@
-const express = require('express')
+const express = require('express');
 
-const Router = express.Router()
-const student = require('../../../controllers/student ')
+const Router = express.Router();
+const student = require('../../../controllers/student ');
 
-Router.post('/', student.registerStudent)
+Router.post('/', student.registerStudent);
 
-Router.get('/:id', student.findStudentsAllocation)
+Router.post('/login', student.login);
 
-Router.patch('/:id', student.editStudent)
+Router.get('/:id', student.findStudentsAllocation);
 
-Router.delete('/:id', student.deleteStudent)
+Router.patch('/:id', student.editStudent);
 
-module.exports = Router
+Router.delete('/:id', student.deleteStudent);
+
+module.exports = Router;

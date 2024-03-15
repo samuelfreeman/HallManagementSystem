@@ -1,19 +1,19 @@
-const express = require('express')
+const express = require('express');
 
-const router = express.Router()
+const router = express.Router();
 
-const allocation = require('../../../controllers/allocation')
+const allocation = require('../../../controllers/allocation');
 
-router.post('/', allocation.saveAllocation)
+router.post('/', allocation.saveAllocation);
 
-router.get('/:id', allocation.findAllocationById)
+router.get('/:id', allocation.findAllocationById);
 
-router.get('/all/analytics', allocation.getAnalytics)
+router.get('/all/analytics', allocation.getAnalytics);
 
-router.get('/', allocation.getAllAlacocation)
+router.get('/', allocation.getAllAlacocation);
 
-router.patch('/:id', allocation.updateAllocation)
+router.patch('/:id', allocation.updateAllocation);
 
-router.delete('/:id', allocation.deleteAllocation)
+router.delete('/:id', allocation.deleteAllocation);
 
-module.exports = router
+module.exports = router;
