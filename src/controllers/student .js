@@ -3,7 +3,7 @@ const bcrypt = require('../utils/bcrypt');
 const logger = require('../utils/loggerUtil');
 const prisma = require('../utils/prismaUtil');
 const CustomError = require('../utils/customErrorClass');
-
+const cloudinary = require('../utils/cloudinary');
 const {
   saveStudent,
   loadStudents,
@@ -16,6 +16,15 @@ exports.registerStudent = async (req, res, next) => {
   try {
     // checking student availability in the system before trying to register a student
     const data = req.body;
+    const photo = req.file ? req.file.path : undefined;
+    if (photo) {
+      const uploaded = await cloudinary.uploader.upload(photo, {
+        folder: 'student/pictures',
+      });
+      if (uploaded) {
+        data.profile = uploaded.secure_url;
+      }
+    }
     data.password = await bcrypt.hash(data.password);
     const student = await saveStudent(data);
     res.status(200).json({
