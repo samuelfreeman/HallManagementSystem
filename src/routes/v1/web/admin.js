@@ -1,25 +1,37 @@
-const express = require('express')
+const express = require('express');
 
-const router = express.Router()
+const router = express.Router();
 
-const admin = require('../../../controllers/admin')
+const admin = require('../../../controllers/admin');
 const {
   adminAvailablity,
   validateEmail,
-} = require('../../../validations/middlewares/adminSignup')
+} = require('../../../validations/middlewares/adminSignup');
 
-router.get('/loggout', admin.logout)
+const validation = require('../../../validations/schemas/admin');
+const {
+  validationError,
+} = require('../../../validations/schemas/validationError');
+const validate = [...validation, validationError];
 
-router.post('/signUp', adminAvailablity, admin.signUp)
+router.get('/loggout', admin.logout);
 
-router.post('/login', validateEmail, admin.login)
+router.post(
+  '/signUp',
 
-router.get('/', admin.loadAdmins)
+  validate,
+  adminAvailablity,
+  admin.signUp,
+);
 
-router.get('/:id', admin.loadSingleAdmin)
+router.post('/login', validateEmail, admin.login);
 
-router.patch('/:id', admin.updateAdmin)
+router.get('/', admin.loadAdmins);
 
-router.delete('/:id', admin.removeAdmin)
+router.get('/:id', admin.loadSingleAdmin);
 
-module.exports = router
+router.patch('/:id', admin.updateAdmin);
+
+router.delete('/:id', admin.removeAdmin);
+
+module.exports = router;

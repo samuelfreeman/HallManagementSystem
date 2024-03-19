@@ -1,16 +1,26 @@
-const express = require('express')
+const express = require('express');
 
-const Router = express.Router()
-const student = require('../../../controllers/student ')
+const Router = express.Router();
 
-Router.post('/', student.registerStudent)
+const student = require('../../../controllers/student ');
 
-Router.get('/:id', student.findStudentsAllocation)
+const multer = require('multer');
+const validation = require('../../../validations/schemas/student');
+const {
+  validationError,
+} = require('../../../validations/schemas/validationError');
+const validate = [...validation, validationError];
 
-Router.get('/', student.getAllstudents)
+const upload = multer({ dest: 'uploads/' });
 
-Router.patch('/:id', student.editStudent)
+Router.post('/', upload.single('profile'), validate, student.registerStudent);
 
-Router.delete('/:id', student.deleteStudent)
+Router.get('/:id', student.findStudentsAllocation);
 
-module.exports = Router
+Router.get('/', student.getAllstudents);
+
+Router.patch('/:id', student.editStudent);
+
+Router.delete('/:id', student.deleteStudent);
+
+module.exports = Router;
