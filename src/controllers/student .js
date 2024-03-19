@@ -16,6 +16,8 @@ exports.registerStudent = async (req, res, next) => {
   try {
     // checking student availability in the system before trying to register a student
     const data = req.body;
+    console.log('This is the data', data);
+    data.level = parseInt(data.level);
     const photo = req.file ? req.file.path : undefined;
     if (photo) {
       const uploaded = await cloudinary.uploader.upload(photo, {

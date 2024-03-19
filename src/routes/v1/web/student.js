@@ -5,7 +5,7 @@ const Router = express.Router();
 const student = require('../../../controllers/student ');
 
 const multer = require('multer');
-const validation = require('../../../validations/schemas/admin');
+const validation = require('../../../validations/schemas/student');
 const {
   validationError,
 } = require('../../../validations/schemas/validationError');

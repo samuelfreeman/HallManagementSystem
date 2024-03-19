@@ -1,7 +1,6 @@
 const { body } = require('express-validator');
 const validate = [
-  body('profile').notEmpty().withMessage('Please include your photo'),
-  body('fullname')
+  body('fullName')
     .notEmpty()
     .withMessage('Please provide your fullname')
     .trim(),
@@ -9,7 +8,7 @@ const validate = [
     .trim()
     .isEmail()
     .withMessage('Please make sure your input is an email'),
-  body('passsword')
+  body('password')
     .trim()
     .isLength({ min: 8 })
     .withMessage('Please your password must be at least 8 characters long')
@@ -25,6 +24,7 @@ const validate = [
     .withMessage(
       'Please make sure the value you have entered is a mobile number',
     ),
+  body('level').trim().toInt(),
 ];
 
 module.exports = validate;
