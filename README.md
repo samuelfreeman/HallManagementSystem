@@ -23,11 +23,11 @@ Hall Management System For Backend.
 # REQUEST MANAGEMENT:
 .Handling room change requests
 .Manage requests for special occomodations.
-# NOTIFICATIONS:
+# NOTIFICATIONS (Pending):
 .Send notification to student or other admins about room assignment or change.
-# REPORT:
+# REPORT(Pending):
 .Generate reports on hall occupancy,room utilization,etc.
-# AUDIT TRAIL:
+# AUDIT TRAIL(Pending):
 .Track and log changes made by admin or user for accountability.
 # SETTINGS:
 .Configure system settings(notification preferences,admin profiles,etc).
@@ -41,15 +41,15 @@ Hall Management System For Backend.
 .Check room assign to and room detials.
 # REQUEST SUBMISSION:
 . Submit room change requests or request for special accomodations.
-# NOTIFICATION:
+# NOTIFICATION: (Pending)
 .Receive notifications.
 # HALL INFORMATION:
 .View information about the hall.
 # FEEDBACK:
 .Provide feedback or report issues.
-# CALANDER:
+# CALANDER (Pending):
 .Display important dates check-in,check-out.
-# EMERGENCY CONTANCTS:
+# EMERGENCY CONTANCTS (Pending):
 .Access emergency contact information.
 # setting:
-.Personal app setting (notification,preference,theme,etc).
+.Personal app setting (notification(Pending),preference(Pending),theme(Pending),etc).
