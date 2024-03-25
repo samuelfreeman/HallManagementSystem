@@ -9,7 +9,7 @@ const {
   deleteAdmin,
 } = require('../helpers/admin');
 
-const signUp = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   try {
     const data = req.body;
 
@@ -27,7 +27,7 @@ const signUp = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+exports.login = async (req, res, next) => {
   try {
     const { password } = req.body;
     const systemPassword = req.person.password;
@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
   }
 };
 
-const logout = async (req, res, next) => {
+exports.logout = async (req, res, next) => {
   try {
     const loggedout = 'loggedout';
     const token = setInvalidToken({ loggedout });
@@ -61,7 +61,7 @@ const logout = async (req, res, next) => {
   }
 };
 
-const loadAdmins = async (req, res, next) => {
+exports.loadAdmins = async (req, res, next) => {
   try {
     const admin = await getAdmins();
     res.status(200).json({ status: 'successfull', admin });
@@ -71,7 +71,7 @@ const loadAdmins = async (req, res, next) => {
   }
 };
 
-const loadSingleAdmin = async (req, res, next) => {
+exports.loadSingleAdmin = async (req, res, next) => {
   try {
     const { id } = req.params;
     const admin = await getSingleAdmin(id);
@@ -83,7 +83,7 @@ const loadSingleAdmin = async (req, res, next) => {
     logger.error(error);
   }
 };
-const updateAdmin = async (req, res, next) => {
+exports.updateAdmin = async (req, res, next) => {
   try {
     const { id } = req.params;
     const data = req.body;
@@ -96,7 +96,7 @@ const updateAdmin = async (req, res, next) => {
     logger.error(error);
   }
 };
-const removeAdmin = async (req, res, next) => {
+exports.removeAdmin = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -108,14 +108,4 @@ const removeAdmin = async (req, res, next) => {
     logger.error(error);
     next(error);
   }
-};
-
-module.exports = {
-  signUp,
-  loadAdmins,
-  login,
-  loadSingleAdmin,
-  updateAdmin,
-  removeAdmin,
-  logout,
 };
