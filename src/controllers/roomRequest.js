@@ -8,7 +8,7 @@ const {
   editRequest,
   loadRequestStudentById,
   deleteRequest,
-} = require('../helpers/roomrequest');
+} = require('../helpers/roomRequest');
 
 exports.requestRoom = async (req, res, next) => {
   try {
