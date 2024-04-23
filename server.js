@@ -22,12 +22,6 @@ const compression = require('compression');
 const bodyparser = require('body-parser');
 const indexRoute = require('./src/routes/index');
 
-const cors = require('cors');
-const compression = require('compression');
-const bodyparser = require('body-parser');
-app.use(morgan('dev'));
-const indexRoute = require('./src/routes/index');
-
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
 app.use(compression());

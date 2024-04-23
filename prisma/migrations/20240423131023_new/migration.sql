@@ -1,8 +1,8 @@
 -- CreateEnum
-CREATE TYPE "blockname" AS ENUM ('A', 'B', 'C', 'D');
+CREATE TYPE "status" AS ENUM ('Vacant', 'Occupied', 'Partially_Occupied');
 
 -- CreateEnum
-CREATE TYPE "status" AS ENUM ('Vacant', 'Occupied', 'Partially_Occupied');
+CREATE TYPE "options" AS ENUM ('Rejected', 'Approved', 'Pending');
 
 -- CreateTable
 CREATE TABLE "admin" (
@@ -29,7 +29,7 @@ CREATE TABLE "student" (
     "telephone" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "departmentId" TEXT,
+    "department" TEXT,
     "hallId" TEXT,
 
     CONSTRAINT "student_pkey" PRIMARY KEY ("studentId")
@@ -50,6 +50,8 @@ CREATE TABLE "allocation" (
 CREATE TABLE "rooms" (
     "id" TEXT NOT NULL,
     "roomnumber" INTEGER NOT NULL,
+    "status" "status" NOT NULL,
+    "blockName" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "hallId" TEXT,
 
@@ -57,13 +59,14 @@ CREATE TABLE "rooms" (
 );
 
 -- CreateTable
-CREATE TABLE "department" (
+CREATE TABLE "roomRequest" (
     "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
+    "StudentId" TEXT,
+    "status" "options" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "department_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "roomRequest_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -79,7 +82,7 @@ CREATE TABLE "hall" (
 CREATE UNIQUE INDEX "admin_email_key" ON "admin"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "student_gender_key" ON "student"("gender");
+CREATE UNIQUE INDEX "student_telephone_key" ON "student"("telephone");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "allocation_studentId_key" ON "allocation"("studentId");
@@ -87,8 +90,8 @@ CREATE UNIQUE INDEX "allocation_studentId_key" ON "allocation"("studentId");
 -- CreateIndex
 CREATE UNIQUE INDEX "rooms_roomnumber_key" ON "rooms"("roomnumber");
 
--- AddForeignKey
-ALTER TABLE "student" ADD CONSTRAINT "student_departmentId_fkey" FOREIGN KEY ("departmentId") REFERENCES "department"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "roomRequest_StudentId_key" ON "roomRequest"("StudentId");
 
 -- AddForeignKey
 ALTER TABLE "student" ADD CONSTRAINT "student_hallId_fkey" FOREIGN KEY ("hallId") REFERENCES "hall"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -101,3 +104,6 @@ ALTER TABLE "allocation" ADD CONSTRAINT "allocation_roomsId_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "rooms" ADD CONSTRAINT "rooms_hallId_fkey" FOREIGN KEY ("hallId") REFERENCES "hall"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "roomRequest" ADD CONSTRAINT "roomRequest_StudentId_fkey" FOREIGN KEY ("StudentId") REFERENCES "student"("studentId") ON DELETE SET NULL ON UPDATE CASCADE;
