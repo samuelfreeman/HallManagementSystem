@@ -6,34 +6,19 @@
   "auditLog": "logs/.4192abe38a19a0ba229170a89a92086c0a4ffd7c-audit.json",
   "files": [
     {
-      "date": 1710801409667,
-      "name": "logs/“NodeWinstonApp-2024-03-18-22.log",
-      "hash": "45cdff83239a9c1da8223a2ecbcfda4f634e614c8003ec87027ab82c9af33a96"
+      "date": 1713871451177,
+      "name": "logs/“NodeWinstonApp-2024-04-23-11.log",
+      "hash": "47ff3b6057bec48f047326262404aa741a21c606b929907391b8675ca8fd4972"
     },
     {
-      "date": 1710802849852,
-      "name": "logs/“NodeWinstonApp-2024-03-18-23.log",
-      "hash": "72aebe3bf4d041fcb6f374e77a2a6338fab2f827351a8161fd92e33145f6935c"
+      "date": 1713875762492,
+      "name": "logs/“NodeWinstonApp-2024-04-23-12.log",
+      "hash": "389df84441194182bd2f410473c3f25599c810a34ccc6496e304baa9ba0e4de8"
     },
     {
-      "date": 1710872172399,
-      "name": "logs/“NodeWinstonApp-2024-03-19-18.log",
-      "hash": "7c1a21018399ae313ed6b7b79702a627aced8715ef710a349fdf6898d8bb2cfc"
-    },
-    {
-      "date": 1711384135591,
-      "name": "logs/“NodeWinstonApp-2024-03-25-16.log",
-      "hash": "f06d6efa97cc0717d83920afff738fbec5f4e1c486ad6a328cad9a96cefedd05"
-    },
-    {
-      "date": 1711453911022,
-      "name": "logs/“NodeWinstonApp-2024-03-26-11.log",
-      "hash": "a1f6706ddde915f618761e62b18ec3face4571d41086680cc2ba44e725e61420"
-    },
-    {
-      "date": 1711586357242,
-      "name": "logs/“NodeWinstonApp-2024-03-28-00.log",
-      "hash": "73ebf20e4bbf211146987f2adf273b59cb37a3c6d452f76cd46ed2c489bfd37c"
+      "date": 1713877867422,
+      "name": "logs/“NodeWinstonApp-2024-04-23-13.log",
+      "hash": "bb0d88c19ca175cc65d5b630169e58e1ee633c5fba8c49e17e658b530ddaa8d5"
     }
   ],
   "hashType": "sha256"
