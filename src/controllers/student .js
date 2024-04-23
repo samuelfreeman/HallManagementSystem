@@ -131,7 +131,6 @@ exports.findStudentsAllocation = async (req, res, next) => {
         studentId: id,
       },
       include: {
-        department: true,
         hall: {
           include: {
             rooms: true,

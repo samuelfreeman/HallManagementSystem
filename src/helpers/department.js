@@ -1,4 +1,6 @@
-const prisma = require('../utils/prismaUtil')
+//  This code is no longer functioning because  there is no department model
+
+/* const prisma = require('../utils/prismaUtil')
 
 const saveDepartment = async (data) => {
   const department = await prisma.department.create({
@@ -62,3 +64,4 @@ module.exports = {
   editDepartments,
   removeDepartments,
 }
+*/

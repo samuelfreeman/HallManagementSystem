@@ -1,0 +1,54 @@
+2024-04-23T19:39:23.188Z [31merror[39m:	
+Invalid `prisma.student.findFirst()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/controllers/student .js:129:42
+
+  126 exports.findStudentsAllocation = async (req, res, next) => {
+  127   try {
+  128     const { id } = req.params;
+→ 129     const student = await prisma.student.findFirst({
+            where: {
+              studentId: "19342692-4dc2-468a-a15c-b19a64feb47d"
+            },
+            include: {
+              department: true,
+              ~~~~~~~~~~
+              hall: {
+                include: {
+                  rooms: true
+                }
+              },
+          ?   allocation?: true,
+          ?   hall?: true,
+          ?   roomRequest?: true
+            }
+          })
+
+Invalid scalar field `department` for include statement on model student. Available options are marked with ?.
+Note that include statements only accept relation fields.
+2024-04-23T19:39:57.638Z [31merror[39m:	
+Invalid `prisma.student.findFirst()` invocation in
+/home/sam/Documents/Allprojects/HallManagementSystem/src/controllers/student .js:129:42
+
+  126 exports.findStudentsAllocation = async (req, res, next) => {
+  127   try {
+  128     const { id } = req.params;
+→ 129     const student = await prisma.student.findFirst({
+            where: {
+              studentId: "list"
+            },
+            include: {
+              department: true,
+              ~~~~~~~~~~
+              hall: {
+                include: {
+                  rooms: true
+                }
+              },
+          ?   allocation?: true,
+          ?   hall?: true,
+          ?   roomRequest?: true
+            }
+          })
+
+Invalid scalar field `department` for include statement on model student. Available options are marked with ?.
+Note that include statements only accept relation fields.
